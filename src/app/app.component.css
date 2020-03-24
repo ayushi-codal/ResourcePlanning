@@ -1,0 +1,46 @@
+
+
+
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, 
+  "PingFang TC", "Heiti TC", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.split__left {
+  width: 50%;
+  background-color: green;
+}
+
+.split__right {
+  flex: 1; 
+  background-color: gray;
+}
+
+.split__bar {
+  background-color: black;
+  width: 15px;
+  height: 100%;
+  cursor: col-resize;
+}
