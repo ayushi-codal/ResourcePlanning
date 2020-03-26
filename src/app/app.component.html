@@ -1,20 +1,24 @@
 <div style="margin-left: 1100px; padding-top: 20px;">
   <app-demo (newAlloacation)=" newProject($event)"></app-demo>
 </div>
-<div class="container split" style="background-color: whitesmoke; margin-top: 20px;">
+<div class="container split" style="background-color: whitesmoke; margin-top: 20px; width: 100%;">
+  <div style=" width: 35%;">
   <as-split direction="horizontal"  >
       <as-split-area size= "10">
           <app-employeetable [newResReceived] = "newRes"  (index)= "getIndex($event)" (empList)="handleResults($event)" (eventClicked)="childEventClicked($event)" ></app-employeetable>
       </as-split-area>
-      
+  </as-split>
+  </div>
+  <div style="width: 70%;">
+    <as-split>
       <as-split-area >
         <div *ngFor = " let e of data"> 
-        <div *ngIf="show && clickedIndex == e.id ">
-        <app-gantt [indexGot]="clickedIndex" [resultGridList]="data" [event]="clickedEvent"></app-gantt>
+          <div *ngIf="show && clickedIndex == e.id ">
+            <app-gantt [indexGot]="clickedIndex" [resultGridList]="data" [event]="clickedEvent"></app-gantt>
+          </div>
         </div>
-         </div>
         <!-- <app-gantt></app-gantt> -->
       </as-split-area>
-      
   </as-split>
+  </div>
 </div>

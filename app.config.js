@@ -1,3 +1,3 @@
 module.exports = {
-  SWAGGER_URL: 'http://be44bf93.ngrok.io',
+  SWAGGER_URL: 'http://08d74512.ngrok.io',
 };

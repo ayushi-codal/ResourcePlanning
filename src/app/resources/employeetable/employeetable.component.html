@@ -35,7 +35,7 @@
     </table>
 </div> -->
 <div class="container" >
-    <table class="table" style="font-size: x-small;">
+    <table class="table" style="font-size:xx-small">
         <thead>
             <tr class="mainTable">
                 <th><b>EMPLOYEE CODE</b></th>
@@ -53,21 +53,21 @@
             <div *ngIf="i === expandedIndex" style="margin-left: 30px;">
                 <thead >
                     <tr>
-                        <th style="display :inline-block; padding-left: 20px;" >Id</th>
-                        <th style="display :inline-block;padding-left: 20px;" >Project</th>
-                        <th style="display :inline-block;padding-left: 40px;">StartDate</th>
-                        <th style="display :inline-block;padding-left: 60px;" >EndDate</th>
+                        <th style="display :inline-block; padding-left: 10px;" >Id</th>
+                        <th style="display :inline-block;padding-left: 10px;" >Project</th>
+                        <th style="display :inline-block;padding-left: 10px;">StartDate</th>
+                        <th style="display :inline-block;padding-left: 10px;" >EndDate</th>
                     </tr>
                 </thead>
                 <tr *ngFor="let data of users ;odd as isOdd; even as isEven" 
                 [class.Odd]="isOdd" 
                 [class.even]="isEven">
                     <div *ngIf = "data.employee_code === user.employee_code ">
-                    <tr *ngFor = " let proj of data.projects">
-                    <td>{{proj.project_code}}</td>
-                    <td>{{proj.project_name}}</td>
-                    <td>{{proj.start_date}}</td>
-                    <td>{{proj.end_date}}</td> 
+                    <tr *ngFor = " let proj of data.projects" >
+                    <td >{{proj.project_code}}</td>
+                    <td >{{proj.project_name}}</td>
+                    <td >{{proj.start_date}}</td>
+                    <td >{{proj.end_date}}</td> 
                     </tr>
                     </div>
                 </tr>
