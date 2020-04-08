@@ -1,5 +1,11 @@
-.details-container
+.details-container,h5
 {
-    background-color: white;
-    color: turquoise;
+    padding: 20px;
+
+}
+.container{
+    margin-bottom: 180px;
+}
+.buttons{
+    margin-top: 20px;
 }

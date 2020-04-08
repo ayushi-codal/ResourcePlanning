@@ -1,74 +1,102 @@
 <div class="container">
-    <button type="button" class="btn btn-primary" (click) = "show()"><i class="fa fa-plus" aria-hidden="true"></i></button>
-     </div>
-  <!-- Creates the bootstrap modal where the image will appear -->
-  <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Allocate</h4>
+   <button type="button" class="btn btn-primary" (click)="show()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+</div>
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Allocate</h4>
+         </div>
+         <div class="modal-body">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+               <div class="row">
+                  <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>Employee Id</label>
+                        <input type="text" formControlName="employeeId" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.employeeId.errors }" />
+                        <div *ngIf="submitted && f.employeeId.errors" class="invalid-feedback">
+                           <div *ngIf="f.employeeId.errors.required">Employee Code is required</div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>Employee Code</label>
+                        <input type="text" formControlName="employeeCode" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.employeeCode.errors }" />
+                        <div *ngIf="submitted && f.employeeCode.errors" class="invalid-feedback">
+                           <div *ngIf="f.employeeCode.errors.required">Employee Code is required</div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>Project Id</label>
+                        <input type="text" formControlName="projectName" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.projectName.errors }" />
+                        <div *ngIf="submitted && f.projectName.errors" class="invalid-feedback">
+                           <div *ngIf="f.projectName.errors.required">Project Name is required</div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" formControlName="startDate" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
+                        <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                           <div *ngIf="f.startDate.errors">Start date of project is required</div>
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" formControlName="endDate" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
+                        <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
+                           <div *ngIf="f.endDate.errors.required">End Date is required</div>
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>Allocation %</label>
+                        <input type="text" formControlName="allocation" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.allocation.errors }" />
+                        <div *ngIf="submitted && f.allocation.errors" class="invalid-feedback">
+                           <div *ngIf="f.allocation.errors.required">Allocation percentage is required</div>
+
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                     <div class="form-group">
+                        <label>Allocation Description</label>
+                        <input type="text" formControlName="allocationDesc" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && f.allocationDesc.errors }" />
+                        <div *ngIf="submitted && f.allocationDesc.errors" class="invalid-feedback">
+                           <div *ngIf="f.allocationDesc.errors.required">Allocation percentage is required</div>
+
+                        </div>
+                     </div>
+                  </div>
+
+               </div>
+               <button type="submit" class="btn btn-primary">Add</button>
+            </form>
+
+
+         </div>
+         <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="hide()">Close</button>
+
+         </div>
       </div>
-      <div class="modal-body">
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                      <div class="row">
-                         <div class="col-sm-6">
-                            <div class="form-group">
-                                  <label>Employee Code</label>
-                                  <input type="text" formControlName="employeeCode" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.employeeCode.errors }" />
-                                  <div *ngIf="submitted && f.employeeCode.errors" class="invalid-feedback">
-                                        <div *ngIf="f.employeeCode.errors.required">Employee Code is required</div>
-                                  </div>
-                               </div>
-                         </div> 
-                         <div class="col-sm-6">
-                            <div class="form-group">
-                               <label>Project Name</label>
-                               <input type="text" formControlName="projectName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.projectName.errors }" />
-                               <div *ngIf="submitted && f.projectName.errors" class="invalid-feedback">
-                                  <div *ngIf="f.projectName.errors.required">Project Name is required</div>
-                               </div>
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
-                               <div class="form-group">
-                                  <label>Start Date</label>
-                                  <input type="date" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
-                                  <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
-                                     <div *ngIf="f.startDate.errors">Start date of project is required</div>
-                                    
-                                  </div>
-                               </div>
-                            </div>
-                         <div class="col-sm-6">
-                            <div class="form-group">
-                               <label>End Date</label>
-                               <input type="date" formControlName="endDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
-                               <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
-                                  <div *ngIf="f.endDate.errors.required">End Date  is required</div>
-                                  
-                               </div>
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
-                            <div class="form-group">
-                               <label>Allocation</label>
-                               <input type="text" formControlName="allocation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.allocation.errors }" />
-                               <div *ngIf="submitted && f.allocation.errors" class="invalid-feedback">
-                                  <div *ngIf="f.allocation.errors.required">Allocation percentage is required</div>
-                                 
-                               </div>
-                            </div>
-                         </div>
-             </div>
-             <button type="submit" class="btn btn-primary">Add</button>
-                </form>
-     
-    
- </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button>
-      
-      </div>
-    </div>
-  </div>
-  </div>
+   </div>
+</div>

@@ -1,120 +1,50 @@
-<!-- <div class="container" style="background-color : whitesmoke;width: 100%; padding-left: 40px; padding-top: 20px;">
-    <table class="table" style="display: table;">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-
-        <tbody *ngFor="let data of users; let $index=index;">
-            <tr>
-                <td>{{data.id}}</td>
-                <td (click)="Collaps($index)">{{data.user_name}}</td>
-            </tr>
-            <span *ngIf="$index === expandedIndex">
-                <thead>
-                    <tr>
-                        <th scope="col">Project</th>
-                        <th scope="col">Technology</th>
-                        <th scope="col">StartDate</th>
-            <th scope="col">EndDate</th>
-                    </tr>
-                </thead>
-                <tr *ngFor="let proj of data.projects">
-
-
-                    <td>{{proj.project_name}}</td>
-                    <td>{{proj.project_technology}}</td>
-                    <td>{{proj.start_date}}</td>
-                    <td>{{proj.end_date}}</td> 
-                  
-                </tr>
-            </span>
-        </tbody>
-    </table>
-</div> -->
-<div class="container" >
-    <table class="table" style="font-size:xx-small">
-        <thead>
+<div class="container">
+    <table class="table">
+        <thead class="mainHead">
             <tr class="mainTable">
                 <th><b>EMPLOYEE CODE</b></th>
                 <th><b>EMPLOYEE NAME</b></th>
+                <th *ngIf="expandedIndex !== -1"><b>ALLOCATION</b></th>
             </tr>
         </thead>
-        <tbody *ngFor = "let user of userData; let i = index ;odd as isOdd; even as isEven" [class.Odd]="isOdd" [class.even]="isEven">
-            <div class="mainData">
-                <!-- <td (click)="getEmployees(i,user.id,$event)">{{i+1}}</td> -->
+        <tbody *ngFor="let user of userData; let i = index ;odd as isOdd; even as isEven" [class.Odd]="isOdd"
+            [class.even]="isEven">
+            <tr class="mainData">
                 <td (click)="getEmployees(i,user.id,$event)">{{user.employee_code}}</td>
                 <td>{{user.first_name}} <span>{{user.last_name}}</span> </td>
-            <!-- <td>{{user.last_name}}</td> -->
-            </div>
-            <br>
-            <div *ngIf="i === expandedIndex" style="margin-left: 30px;">
-                <thead >
-                    <tr>
-                        <th style="display :inline-block; padding-left: 10px;" >Id</th>
-                        <th style="display :inline-block;padding-left: 10px;" >Project</th>
-                        <th style="display :inline-block;padding-left: 10px;">StartDate</th>
-                        <th style="display :inline-block;padding-left: 10px;" >EndDate</th>
-                    </tr>
-                </thead>
-                <tr *ngFor="let data of users ;odd as isOdd; even as isEven" 
-                [class.Odd]="isOdd" 
-                [class.even]="isEven">
-                    <div *ngIf = "data.employee_code === user.employee_code ">
-                    <tr *ngFor = " let proj of data.projects" >
-                    <td >{{proj.project_code}}</td>
-                    <td >{{proj.project_name}}</td>
-                    <td >{{proj.start_date}}</td>
-                    <td >{{proj.end_date}}</td> 
-                    </tr>
+                <td *ngIf="i === expandedIndex">
+                    <div class="progress">
+                        <div *ngFor="let data of projectList;" class="progress-bar" role="progressbar"
+                            [ngStyle]="getColor(data.allocation,projectList.length)">
+                            <div *ngIf="data.ecode === user.employee_code">{{data.pname}}</div>
+                        </div>
                     </div>
-                </tr>
+                </td>
+            </tr>
+            <br>
+            <div *ngIf="i === expandedIndex" class="inTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Project</th>
+                            <th>StartDate</th>
+                            <th>EndDate</th>
+                        </tr>
+                    </thead>
+                    <div class="innerdata" *ngFor="let data of users ;odd as isOdd; even as isEven" [class.Odd]="isOdd"
+                        [class.even]="isEven">
+                        <div class="inner" *ngIf="data.employee_code === user.employee_code ">
+                            <tr *ngFor=" let proj of data.projects">
+                                <td>{{proj.project_code}}</td>
+                                <td>{{proj.project_name}}</td>
+                                <td>{{proj.start_date}}</td>
+                                <td>{{proj.end_date}}</td>
+                            </tr>
+                        </div>
+                    </div>
+                </table>
             </div>
         </tbody>
     </table>
 </div>
-
-
-<!-- <div class="example-container mat-elevation-z8">
-    <div class="example-container ">
- 
-<table mat-table  #outerSort="matSort" [dataSource]="dataSource" 
-multiTemplateDataRows class="mat-elevation-z8" matSort>
-	<ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{column}} </th>
-        <i class="fas fa-caret-down"></i> 
-		<td mat-cell  *matCellDef="let element"><i class="fas fa-caret-down"></i>   {{element[column]}} </td>
-	</ng-container>
-	<ng-container matColumnDef="expandedDetail">
-		<td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-            <div class="example-element-detail" *ngIf="element.projects?.data.length"
-             [@detailExpand]="checkExpanded(element) ? 'expanded' : 'collapsed'">
-				<div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
-          <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-          </mat-form-field>
-          <table #innerTables mat-table #innerSort="matSort" [dataSource]="element.projects" 
-          matSort>
-            <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of innerDisplayedColumns">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </th>
-              <td mat-cell *matCellDef="let element"> {{element[innerColumn]}} </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="innerDisplayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: innerDisplayedColumns;"></tr>
-          </table>
-				</div>
-			</div>
-		</td>
-	</ng-container>
-
-	<tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-	 [class.example-expanded-row]="checkExpanded(element)" (click)="toggleRow(element)">
-	</tr>
-	<tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-</table>
-</div>
-
- -->

@@ -31,6 +31,10 @@ export interface Employeeprojectrelation {
     id ? : number;
     project_code ? : number;
     employee_id ? : number;
+    start_date ? : string;
+    end_date ? : string;
+    work_alloted ? : number;
+    work_alloted_description ? : string;
     updated_date ? : string;
     created_date ? : string;
 }
@@ -46,8 +50,6 @@ export interface Project {
     end_date ? : string;
     project_lead ? : number;
     project_technology ? : string;
-    project_perc_alloted ? : number;
-    alloted_description ? : string;
     update_date ? : string;
     create_date ? : string;
 }
@@ -94,7 +96,7 @@ export class ResorcePlanningApi {
     public domain: string;
 
     constructor(private http: HttpClient) { // had to include HTTP_PROVIDERS in bootstrap (global) for this to work. Workaround needed
-        this.domain = "http://08d74512.ngrok.io";
+        this.domain = "http://2431ec36.ngrok.io";
     }
 
     /**
@@ -286,7 +288,7 @@ export class ResorcePlanningApi {
         $queryParameters ? : {}
     }, headers: HttpHeaders): Observable < any > {
         let domain = this.domain;
-        let path = '/Employeeprojectrelation/createRelation';
+        let path = '/Employeeprojectrelation/projectAllocation';
         let body: string = '';
         let queryParameters = {};
         let url: string;
@@ -482,6 +484,54 @@ export class ResorcePlanningApi {
         };
 
         return this.http.get(url, requestOptionArgs)
+            .pipe(
+                map((res: any) => res),
+                catchError(this.handleError)
+            )
+    };
+    /**
+     * Update existing employee project details
+     * @method
+     * @name ResorcePlanningApi#Update_Relation_Detials_1
+     * @param  id - ID of Employee Project Relation
+     * @param  body - Update Employee Project Relation details
+     *
+     */
+    Update_Relation_Detials_1(parameters: {
+        'id': number,
+        'body' ? : any,
+        $queryParameters ? : {}
+    }, headers: HttpHeaders): Observable < any > {
+        let domain = this.domain;
+        let path = '/allocation/{id}';
+        let body: string = '';
+        let queryParameters = {};
+        let url: string;
+        let requestOptionArgs = {};
+        let paramsStr: string;
+        let form = new FormData();
+
+        // TODO check if param is required in header or body
+        // if(parameters['id'] === undefined){
+        //    return Observable.throw(new Error('Missing required  parameter: id'));
+        // }
+
+        path = path.replace(/{id}/, parameters['id'].toString());
+
+        if (parameters['body'] !== undefined) {
+            body = JSON.stringify(parameters['body']);
+        }
+
+        if (parameters.$queryParameters) {
+            queryParameters = this.setQueryParameters(parameters, queryParameters);
+        }
+        url = this.getUrl(path, queryParameters);
+
+        requestOptionArgs = {
+            headers: headers
+        };
+
+        return this.http.put(url, body, requestOptionArgs)
             .pipe(
                 map((res: any) => res),
                 catchError(this.handleError)

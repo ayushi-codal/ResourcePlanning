@@ -1,20 +1,12 @@
- 
-<span>
-<div>
-    <span><input type='button' class="btn btn-primary" value='Week' (click)='changeViewMode($event)' /></span>&nbsp;
-    <span><input type='button' class="btn btn-primary" value='Month' (click)='changeViewMode($event)' /></span>&nbsp;
-    <span><input type='button' class="btn btn-primary" value='Day' (click)='changeViewMode($event)' /></span>&nbsp;
-    <span><input type='button' class="btn btn-primary" value='Year' (click)='changeViewMode($event)' /></span>&nbsp;
-    <!-- <span><button class="btn btn-primary" value="week" (click)= "changeViewMode(this.value);"> Week </button></span>&nbsp;
-    <span><button class="btn btn-primary" value="day" (click)= "changeViewMode(this);" > Day </button></span>&nbsp;
-    <span><button class="btn btn-primary" value="month" (click)= "changeViewMode(this.value);"> Month </button></span>&nbsp;
-    <span><button class="btn btn-primary" value="Year" (click)= "changeViewMode(this.value);" > Year</button></span>&nbsp; -->
+<div class="container">
+    <div class="buttons">
+        <span><input type='button' class="btn btn-primary" value='Week' (click)="changeViewMode($event);" /></span>&nbsp;
+        <span><input type='button' class="btn btn-primary" value="Month" (click)="changeViewMode($event);" /></span>&nbsp;
+        <span><input type='button' class="btn btn-primary" value='Day' (click)="changeViewMode($event);" /></span>&nbsp;
+        <span><input type='button' class="btn btn-primary" value='Year'(click)="changeViewMode($event);" /></span>&nbsp;
+    </div>
+    <br>
+    <span>
+        <svg #gantt></svg>
+    </span>
 </div>
-
-<br>  
-<span>
-
-<svg style="display :block;" #gantt></svg>
-
-</span>
-</span>

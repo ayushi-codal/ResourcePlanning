@@ -1,89 +1,71 @@
 
-.mat-form-field + .mat-form-field {
-    margin-left: 8px;
-  }
-  .example-container {
-    overflow: auto;
-  }
-  table {
-    width: 100%;
+table {
     display :inline-block;
+    border-collapse: collapse;
+    padding-right: 0;
+    margin-right: 0;
+    font-size:xx-small;
+    padding: 0%;
+    margin: 0%;
   }
-  .mainTable{
+  .mainHead{
+    padding-right: 0%;
+  }
+  .table td, .table th {
+  padding: 8px;
+}
+.table tr:hover{
+  background-color: #ddd;
+}
+.table th{
+  text-align: left;
+}
+.mainTable{
     display :inline-block;
+    border-collapse: collapse;
+
   }
-  .mainData
+ .mainData
   {
     display: inline-block;
     padding-left : 40px;
     padding-right: 20px;
     margin-left: 10px;
+    border-collapse: collapse;
 
   }
+  .inTable
+  {
+    padding-left: 45px;
+  }
+.inTable th
+{
+    display: inline-block;
+    padding-left: 25px;
+    background-color: darkgrey;
+}
+.inTable tr
+{
+  margin-left: 35px;
+}
+.innerData{
+  padding-left: 25px; 
+}
+.inner{
+  padding-left: 25px;
+}
 .container{
   background-color : white;
   width: 100%;
   padding-left: 40px; 
   padding-top: 20px;
+  padding: 0%;
+  margin: 0%;
 }
 .even { background-color : whitesmoke; }
 .odd { background-color: green; }
-
-  /* .innerTables
-  {
-    background-color: fuchsia;
-  } */
+.progress{
+  width: 100%;
+  background-color: darkgray;
+}
   
-  /* tr.example-detail-row {
-    height: 0;
-  }
-  
-  tr.example-element-row:not(.example-expanded-row):hover {
-    background : gainsboro;
-  }
-  
-  tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
-  }
-  
-  .example-element-row td {
-    border-bottom-width: 0;
-  }
-  
-  .example-element-detail {
-    overflow: hidden;
-    display: flex;
-  }
-  
-  .example-element-diagram {
-    min-width: 80px;
-    border: 2px solid black;
-    padding: 8px;
-    font-weight: lighter;
-    margin: 8px 0;
-    height: 104px;
-  }
-  
-  .example-element-symbol {
-    font-weight: bold;
-    font-size: 40px;
-    line-height: normal;
-  }
-  
-  .example-element-description {
-    padding: 16px;
-  }
-  
-  .example-element-description-attribution {
-    opacity: 0.5;
-  }
-  
-  .inner-table {
-    width: 150%;
-  }
-  
-  .inner-table mat-form-field {
-    margin-top: 15px;
-    /* width: 100%; */
-  /* } */ 
- 

@@ -17,6 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ResorcePlanningApi } from 'src/common/swagger-providers/rp-api.provider';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 @NgModule({
   declarations: [GanttComponent, EmployeetableComponent, DemoComponent],
   imports: [
@@ -33,7 +34,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     MatCardModule,
     MatDialogModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    AutocompleteLibModule
 
   ],
   exports: [
