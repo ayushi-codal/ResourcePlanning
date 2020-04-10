@@ -1,0 +1,21 @@
+<div style="margin-left: 1100px; padding-top: 20px;">
+    <app-demo (newAlloacation)=" newProject($event)"></app-demo>
+  </div>
+  <div class="container split splitter" style="background-color: whitesmoke; margin-top: 20px; margin-bottom: 40px;">
+    <div style=" width: 35%;">
+      <as-split direction="horizontal">
+        <as-split-area size="10">
+          <app-employeetable [newResReceived]="newRes" (empList)="handleResults($event)"></app-employeetable>
+        </as-split-area>
+      </as-split>
+    </div>
+    <div style=" width: 65%;">
+      <as-split>
+        <as-split-area>
+          <div *ngIf="sss">
+            <app-gantt [resultGridList]="data" (showVal)="checkChange($event)"></app-gantt>
+          </div>
+        </as-split-area>
+      </as-split>
+    </div>
+  </div>

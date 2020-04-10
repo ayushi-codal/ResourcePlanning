@@ -96,7 +96,7 @@ export class ResorcePlanningApi {
     public domain: string;
 
     constructor(private http: HttpClient) { // had to include HTTP_PROVIDERS in bootstrap (global) for this to work. Workaround needed
-        this.domain = "http://2431ec36.ngrok.io";
+        this.domain = "http://b3e2a3a6.ngrok.io";
     }
 
     /**

@@ -35,6 +35,7 @@ export class EmployeetableComponent implements OnInit {
     console.log('this.expandedIndex', this.expandedIndex)
     console.log(idd)
     this.dataService.getEmployee(idd).subscribe((res: any) => {
+      console.log(res);
       let a = [];
       for (let project of res) {
         let isExists = a.findIndex(t => t.id === project.id);

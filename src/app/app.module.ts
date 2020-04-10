@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularSplitModule } from 'angular-split';
 import { ResorcePlanningApi } from 'src/common/swagger-providers/rp-api.provider';
+import { RpComponent } from './rp/rp.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RpComponent
   ],
   imports: [
     BrowserModule,

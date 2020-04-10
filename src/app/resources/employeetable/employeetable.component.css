@@ -7,12 +7,14 @@ table {
     font-size:xx-small;
     padding: 0%;
     margin: 0%;
+    position: relative;
   }
   .mainHead{
     padding-right: 0%;
   }
   .table td, .table th {
   padding: 8px;
+  table-layout: fixed;
 }
 .table tr:hover{
   background-color: #ddd;
@@ -34,9 +36,23 @@ table {
     border-collapse: collapse;
 
   }
+  
   .inTable
   {
     padding-left: 45px;
+  }
+  thead {
+    width: calc( 100% - 1em )/* scrollbar is average 1em/16px width, remove it from thead width */
+}
+tbody{
+  display:block;
+    overflow:auto;
+}
+  th{
+    /* position: sticky; */
+    /* top: 0; */
+    /* position: fixed; */
+    top: 0;
   }
 .inTable th
 {
