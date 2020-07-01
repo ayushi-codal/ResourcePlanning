@@ -96,7 +96,7 @@ export class ResorcePlanningApi {
     public domain: string;
 
     constructor(private http: HttpClient) { // had to include HTTP_PROVIDERS in bootstrap (global) for this to work. Workaround needed
-        this.domain = "http://b3e2a3a6.ngrok.io";
+        this.domain = "http://e46f9af4.ngrok.io";
     }
 
     /**
@@ -213,7 +213,7 @@ export class ResorcePlanningApi {
         $queryParameters ? : {}
     }, headers: HttpHeaders): Observable < EmployeeWrapper > {
         let domain = this.domain;
-        let path = '/employee/{id}';
+        let path = '/Employee/{id}';
         let body: string = '';
         let queryParameters = {};
         let url: string;
@@ -582,7 +582,7 @@ export class ResorcePlanningApi {
         $queryParameters ? : {}
     }, headers: HttpHeaders): Observable < ProjectWrapper > {
         let domain = this.domain;
-        let path = '/project/{id}';
+        let path = '/Project/{id}';
         let body: string = '';
         let queryParameters = {};
         let url: string;

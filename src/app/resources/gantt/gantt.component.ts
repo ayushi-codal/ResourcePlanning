@@ -1,20 +1,21 @@
-import { Component, NgZone, ViewChild, ElementRef, OnInit, Input, SimpleChanges, SimpleChange, Output, EventEmitter, Inject, forwardRef } from "@angular/core";
+import { Component, NgZone, ViewChild, ElementRef, Input, SimpleChanges,  Output, EventEmitter } from "@angular/core";
 import * as moment from 'moment';
 import {Gantt} from 'node_modules/frappe-gantt/src/index.js';
+import { ProjectList } from '../models/project.model';
+import { GanttTasks } from '../models/ganttTasks.model';
 @Component({
   selector: 'app-gantt',
   templateUrl: './gantt.component.html',
   styleUrls: ['./gantt.component.css']
 })
 export class GanttComponent {
-  @Input() public resultGridList : Array<any> = [];
+  @Input() public resultGridList : Array<ProjectList> = [];
   @Output() showVal = new EventEmitter();
   @ViewChild('gantt',{static: true}) gantt: ElementRef;
   dataSource: Object;
   title: string;
   chart: any;
-  tasks : any;
-  array : any[];
+  tasks : GanttTasks[] = [];
   showContent : boolean;
   mode : any;
   changeLog: any;
@@ -25,24 +26,21 @@ export class GanttComponent {
       let fChange = chng.firstChange;
       let cur   = (chng.currentValue);
       let prev = (chng.previousValue);
-      console.log(cur,prev,fChange)
       if(fChange || (cur[0].id !== prev[0].id)  )
       {
-        console.log("change");
         this.showContent = true;
         this.showVal.emit(this.showContent) ;
       }
       
       else{
-        console.log("no change")
         this.showContent = false;
         this.showVal.emit(this.showContent) ;
-        
       }
     }
   }
   
   ngAfterViewInit(){ 
+    console.log(this.resultGridList)
     for( var i =0; i<this.resultGridList.length;i++)
     {
       var newobj = [];
@@ -52,7 +50,6 @@ export class GanttComponent {
         this.tasks = newobj;
     });
     }
-     console.log(this.tasks)
     this.gantt.nativeElement = new Gantt(this.gantt.nativeElement, this.tasks, {
       header_height: 40,
       column_width: 20,
@@ -97,7 +94,6 @@ export class GanttComponent {
   }
   reloadNew(task)
   {
-    console.log(task)
     this.gantt.nativeElement.refresh(task);
   }
 changeViewMode(eventt)

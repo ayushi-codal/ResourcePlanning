@@ -12,7 +12,11 @@
     <div style=" width: 65%;">
       <as-split>
         <as-split-area>
-          <div *ngIf="sss">
+          <div class="text" *ngIf="!display">
+            <h3>Click on Employee to get Project &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp; allocation details</h3>
+          </div>
+          <div *ngIf="display">
             <app-gantt [resultGridList]="data" (showVal)="checkChange($event)"></app-gantt>
           </div>
         </as-split-area>

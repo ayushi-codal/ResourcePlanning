@@ -12,33 +12,33 @@
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
                <div class="row">
-                  <div class="col-sm-6">
+                  <!-- <div class="col-sm-6">
                      <div class="form-group">
                         <label>Employee Id</label>
                         <input type="text" formControlName="employeeId" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && f.employeeId.errors }" />
-                        <div *ngIf="submitted && f.employeeId.errors" class="invalid-feedback">
-                           <div *ngIf="f.employeeId.errors.required">Employee Code is required</div>
+                           [ngClass]="{ 'is-invalid': submitted && formFields.employeeId.errors }" />
+                        <div *ngIf="submitted && formFields.employeeId.errors" class="invalid-feedback">
+                           <div *ngIf="formFields.employeeId.errors.required">Employee Code is required</div>
                         </div>
                      </div>
-                  </div>
+                  </div> -->
                   <div class="col-sm-6">
                      <div class="form-group">
                         <label>Employee Code</label>
                         <input type="text" formControlName="employeeCode" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && f.employeeCode.errors }" />
-                        <div *ngIf="submitted && f.employeeCode.errors" class="invalid-feedback">
-                           <div *ngIf="f.employeeCode.errors.required">Employee Code is required</div>
+                           [ngClass]="{ 'is-invalid': submitted && formFields.employeeCode.errors }" />
+                        <div *ngIf="submitted && formFields.employeeCode.errors" class="invalid-feedback">
+                           <div *ngIf="formFields.employeeCode.errors.required">Employee Code is required</div>
                         </div>
                      </div>
                   </div>
                   <div class="col-sm-6">
                      <div class="form-group">
-                        <label>Project Id</label>
-                        <input type="text" formControlName="projectName" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && f.projectName.errors }" />
-                        <div *ngIf="submitted && f.projectName.errors" class="invalid-feedback">
-                           <div *ngIf="f.projectName.errors.required">Project Name is required</div>
+                        <label>Project code</label>
+                        <input type="text" formControlName="projectCode" class="form-control"
+                           [ngClass]="{ 'is-invalid': submitted && formFields.projectCode.errors }" />
+                        <div *ngIf="submitted && formFields.projectCode.errors" class="invalid-feedback">
+                           <div *ngIf="formFields.projectCode.errors.required">Project Code is required</div>
                         </div>
                      </div>
                   </div>
@@ -46,9 +46,9 @@
                      <div class="form-group">
                         <label>Start Date</label>
                         <input type="date" formControlName="startDate" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
-                        <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
-                           <div *ngIf="f.startDate.errors">Start date of project is required</div>
+                           [ngClass]="{ 'is-invalid': submitted && formFields.startDate.errors }" />
+                        <div *ngIf="submitted && formFields.startDate.errors" class="invalid-feedback">
+                           <div *ngIf="formFields.startDate.errors">Start date of project is required</div>
 
                         </div>
                      </div>
@@ -57,9 +57,9 @@
                      <div class="form-group">
                         <label>End Date</label>
                         <input type="date" formControlName="endDate" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && f.endDate.errors }" />
-                        <div *ngIf="submitted && f.endDate.errors" class="invalid-feedback">
-                           <div *ngIf="f.endDate.errors.required">End Date is required</div>
+                           [ngClass]="{ 'is-invalid': submitted && formFields.endDate.errors }" />
+                        <div *ngIf="submitted && formFields.endDate.errors" class="invalid-feedback">
+                           <div *ngIf="formFields.endDate.errors.required">End Date is required</div>
 
                         </div>
                      </div>
@@ -68,9 +68,9 @@
                      <div class="form-group">
                         <label>Allocation %</label>
                         <input type="text" formControlName="allocation" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && f.allocation.errors }" />
-                        <div *ngIf="submitted && f.allocation.errors" class="invalid-feedback">
-                           <div *ngIf="f.allocation.errors.required">Allocation percentage is required</div>
+                           [ngClass]="{ 'is-invalid': submitted && formFields.allocation.errors }" />
+                        <div *ngIf="submitted && formFields.allocation.errors" class="invalid-feedback">
+                           <div *ngIf="formFields.allocation.errors.required">Allocation percentage is required</div>
 
                         </div>
                      </div>
@@ -79,9 +79,9 @@
                      <div class="form-group">
                         <label>Allocation Description</label>
                         <input type="text" formControlName="allocationDesc" class="form-control"
-                           [ngClass]="{ 'is-invalid': submitted && f.allocationDesc.errors }" />
-                        <div *ngIf="submitted && f.allocationDesc.errors" class="invalid-feedback">
-                           <div *ngIf="f.allocationDesc.errors.required">Allocation percentage is required</div>
+                           [ngClass]="{ 'is-invalid': submitted && formFields.allocationDesc.errors }" />
+                        <div *ngIf="submitted && formFields.allocationDesc.errors" class="invalid-feedback">
+                           <div *ngIf="formFields.allocationDesc.errors.required">Allocation percentage is required</div>
 
                         </div>
                      </div>

@@ -1,8 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 import { ResorcePlanningApi } from 'src/common/swagger-providers/rp-api.provider';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
@@ -27,9 +26,9 @@ export class DemoComponent implements OnInit {
   }
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      employeeId: ['', Validators.required],
+      // employeeId: ['', Validators.required],
       employeeCode: ['', [Validators.required, Validators.maxLength(6)]],
-      projectName: ['', [Validators.required]],
+      projectCode: ['', [Validators.required]],
       endDate: ['', [Validators.required]],
       startDate: ['', [Validators.required]],
       allocation: ['', [Validators.required]],
@@ -39,10 +38,8 @@ export class DemoComponent implements OnInit {
     headers.append('X-Requested-With', 'XMLHttpRequest');
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
-    console.log('headers', headers)
     this.rp.GetEmployee({}, headers).subscribe((res: any) => {
       this.empList = res;
-      console.log(this.empList);
     });
 
   }
@@ -62,7 +59,7 @@ export class DemoComponent implements OnInit {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
+  get formFields() { return this.registerForm.controls; }
   onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
@@ -70,23 +67,19 @@ export class DemoComponent implements OnInit {
       return;
     }
     if (this.submitted) {
-      console.log(this.registerForm.value);
       this.newData = (this.registerForm.value);
-      console.log(this.newData)
       this.newAlloacation.emit(this.newData);
       let headers = new HttpHeaders();
       headers.append('X-Requested-With', 'XMLHttpRequest');
       headers.append('Accept', 'application/json');
       headers.append('Content-Type', 'application/json');
-      console.log('headers', headers)
       const body = this.registerForm.value;
-      console.log(this.newData.employeeId)
       const params = {
         body: {
 
-          "id": Number(this.newData.employeeId),
-          "employee_id": Number(this.newData.employeeCode),
-          "project_code": Number(this.newData.projectName),
+          // "id": Number(this.newData.employeeId),
+          "employee_code": Number(this.newData.employeeCode),
+          "project_code": Number(this.newData.projectCode),
           "start_date": this.newData.startDate,
           "end_date": this.newData.endDate,
           "work_alloted": Number(this.newData.allocation),

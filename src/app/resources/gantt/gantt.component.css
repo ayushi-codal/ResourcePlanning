@@ -8,4 +8,9 @@
 }
 .buttons{
     margin-top: 20px;
+    
 }
+input[type =button] {
+    padding: 2px;
+    font-size: smaller;
+  }

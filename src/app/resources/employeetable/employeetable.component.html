@@ -1,7 +1,7 @@
 <div class="container">
     <table class="table" fixed-header>
         <thead class="mainHead" >
-            <tr class="mainTable" fixed-header>
+            <tr class="mainTable" >
                 <th><b>EMPLOYEE CODE</b></th>
                 <th><b>EMPLOYEE NAME</b></th>
                 <th *ngIf="expandedIndex !== -1"><b>ALLOCATION</b></th>
@@ -10,13 +10,13 @@
         <tbody *ngFor="let user of userData; let i = index ;odd as isOdd; even as isEven" [class.Odd]="isOdd"
             [class.even]="isEven">
             <tr class="mainData">
-                <td (click)="getEmployees(i,user.id,$event)">{{user.employee_code}}</td>
+                <td (click)="getEmployees(i,user.id,$event)"><i class="fa fa-angle-down" ></i>&nbsp;&nbsp;{{user.employee_code}}</td>
                 <td>{{user.first_name}} <span>{{user.last_name}}</span> </td>
                 <td *ngIf="i === expandedIndex">
                     <div class="progress">
                         <div *ngFor="let data of projectList;" class="progress-bar" role="progressbar"
                             [ngStyle]="getColor(data.allocation,projectList.length)">
-                            <div *ngIf="data.ecode === user.employee_code">{{data.pname}}</div>
+                            <div class="proj" *ngIf="data.ecode === user.employee_code">{{data.pname}}</div>
                         </div>
                     </div>
                 </td>
